@@ -12,9 +12,9 @@
     .cardholder {
         background-color:blanchedalmond;
         width: 1000px;
-        height: 600px;
+        height: 800px;
         border: none;
-        overflow: auto;
+        overflow:auto;
         border-radius: 5px;
         position: relative;
     }
@@ -90,13 +90,27 @@
     .imgcard-commom-btn:hover{
         background-color: rgb(198, 227, 245);
     }
-    
+
+    #imgcard-more-detail{
+        display: none;
+        width:100%;
+        height:auto;
+        background-color: whitesmoke;
+        overflow:visible;
+        border: 0 1px 1px solid lightgrey;
+        border-radius: 0 0 5px 5px;;
+        box-shadow: 0px 8px 8px lightgrey;
+        margin: auto;
+        margin-top: 0px;
+        padding: 20px;
+        color:darkgrey;
+    }
 </style>
 </head>
 <body>
 
     <div class="cardholder">
-        <div class="imgcard">
+        <div class="imgcard" id="image-card">
             <div class="imagecard-header">
                 <strong>Hyun Bin</strong>
                 <p style="color:darkgrey">‎September 25, 1982</p>
@@ -111,11 +125,29 @@
             <div class="imgcard-footer">
                 <button class="imgcard-commom-btn">Like</button>
                 <button class="imgcard-commom-btn">Share</button>
-                <button class="imgcard-commom-btn" style="float:right">More</button>
+                <button class="imgcard-commom-btn" id="show-more-button" type="button" style="float:right" onclick="showMore()">More</button>
             </div>
-
+            <div id="imgcard-more-detail">
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et temporibus maxime vel molestiae reprehenderit deserunt fugit harum voluptatem obcaecati perferendis exercitationem dolore est quasi quos, eligendi numquam aspernatur itaque ratione?
+                </p>
+            </div>
         </div>
     </div>
     
+    <script>
+        function showMore() {
+            if(document.getElementById("show-more-button").innerText == "More") {
+                document.getElementById("imgcard-more-detail").style.display = "block";
+                document.getElementById("show-more-button").innerText = "Back";
+                document.getElementById("image-card").style.borderRadius = "5px 5px 0 0 ";
+            }
+            else{
+                document.getElementById("imgcard-more-detail").style.display = "none";
+                document.getElementById("show-more-button").innerText = "More";
+                document.getElementById("image-card").style.borderRadius = "5px";
+                }
+        }
+    </script>
 </body>
 </html>
