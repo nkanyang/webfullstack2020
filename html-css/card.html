@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card</title>
 <style>
-
+/* 位置感和布局做的还是不错的，下面是一些改进意见
+1. 命名的时候尽量用BEM, 比如cardholder, imgcard__header, imgcard__header__left, imgcard__header__right
+2. 字体是可以通过font-family调一下，也有一些Google fonts可以引用过来
+3. icon是可以用font-awsome来直接用的，比img要好，可以调颜色，背景也是transparent的
+4. flex box的练习可以直接把这个card copy几个放进去 */
     * {
         box-sizing: border-box;
     }
@@ -17,6 +21,7 @@
         overflow:auto;
         border-radius: 5px;
         position: relative;
+        /* 这个positon不需要的，一般position relative是和absolute结合使用，parent relateive给child absolute做参考 */
     }
     .imgcard {
         width:400px;
@@ -113,6 +118,7 @@
         <div class="imgcard" id="image-card">
             <div class="imagecard-header">
                 <strong>Hyun Bin</strong>
+                <!-- 尽量不要加inline的style, 这里也可以用span -->
                 <p style="color:darkgrey">‎September 25, 1982</p>
             </div>
             <div class="imgcard-links">
@@ -136,8 +142,10 @@
     </div>
     
     <script>
+
         function showMore() {
             if(document.getElementById("show-more-button").innerText == "More") {
+                // 一般情况不用直接在js里改style，都是把要改的写成一个style，直接换style
                 document.getElementById("imgcard-more-detail").style.display = "block";
                 document.getElementById("show-more-button").innerText = "Back";
                 document.getElementById("image-card").style.borderRadius = "5px 5px 0 0 ";
