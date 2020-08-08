@@ -1,13 +1,13 @@
 const fs = require('fs');
 const FILE_NAME = "./full_tournament.txt";
-const { recordPoint, recordMatchId, recordPlayers} = require("./line-operations");
+const { recordPoint, recordMatchId, recordPlayers } = require("./line-operations");
 
 const matches = {};
 
 const lineOperations = {
-  '1': recordPoint(matches),
-  '2': recordMatchId(matches),
-  '5': recordPlayers(matches)
+  '1': recordPoint,
+  '2': recordMatchId,
+  '5': recordPlayers
 };
 
 var lineReader = require('readline').createInterface({
@@ -16,7 +16,7 @@ var lineReader = require('readline').createInterface({
 
 lineReader.on('line', (line) => {
   let array = line.toString().split(" ");
-  lineOperations[array.length](array);
+  lineOperations[array.length](matches, array);
 })
   .on('close', () => {
     // console.log(JSON.stringify(matches));
@@ -24,7 +24,6 @@ lineReader.on('line', (line) => {
     printMatchById(matches, '01');
     printWonRecordByPalyerName(matches, 'A')
   });
-
 
 var printMatchById = (matches, matchId) => {
   let match = matches[matchId];
