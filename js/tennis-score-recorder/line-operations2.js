@@ -36,7 +36,6 @@ const recordPoint = (matches, array) => {
 const recordMatchId = (matches, array) => {
   console.log("record match id: " + array[1]);
   matches.current = array[1];
-  // matches[matches.current] = {};
 } 
 
 const recordPlayers = (matches, array) => {
