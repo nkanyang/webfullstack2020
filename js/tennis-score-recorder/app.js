@@ -1,6 +1,6 @@
 const fs = require('fs');
 const FILE_NAME = "./full_tournament.txt";
-const { recordPoint, recordMatchId, recordPlayers } = require("./line-operations");
+const { recordPoint, recordMatchId, recordPlayers } = require("./line-operations2");
 
 const matches = {};
 
@@ -19,7 +19,7 @@ lineReader.on('line', (line) => {
   lineOperations[array.length](matches, array);
 })
   .on('close', () => {
-    // console.log(JSON.stringify(matches));
+    console.log(JSON.stringify(matches,null, '  '));
     console.log("Recording done!")
     printMatchById(matches, '01');
     printWonRecordByPalyerName(matches, 'A')
